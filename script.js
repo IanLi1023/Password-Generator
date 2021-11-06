@@ -10,7 +10,7 @@ const lowerCasedChars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 
 const upperCasedChars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// Password to the #password input
 function passwordOption() {
   let passwordLength = parseInt(prompt('How long would you like your password to be?'))
   
@@ -27,11 +27,13 @@ function passwordOption() {
     alert('Password length must be less than 128 characters!')
     return
   }
-
+  // Pop up prompts for users to personalize their password
   let specials = confirm('Would you like to add special characters?')
   let lowers = confirm('Would you like to add lowers?')
   let uppers = confirm('Would you like to add uppers?')
   let numeric = confirm('Would you like to add numeric?')
+  
+  // Users must choose atleast 1 parameter for app to run
   if (!specials && !lowers && !uppers && !numeric) {
     alert('Select atleast one set of characters!')
     return
@@ -43,12 +45,15 @@ function passwordOption() {
   console.log('options: ', options)
 return options
 }
+
+//Generating password
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.textContent=password
 }
 
+//Arrays and numeric, lower, upper and special parameters in order to generate password
 function generatePassword() {
   let options=passwordOption()
   let bigArray=[]
@@ -89,5 +94,5 @@ function pickRandom(arr){
   return arr[randomIndex]
 } 
 
-// Add event listener to generate button
+// Event listener to generate button
 generateBtn.addEventListener("click", writePassword);
